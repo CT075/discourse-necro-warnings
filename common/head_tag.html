@@ -4,8 +4,9 @@
            replyToPost(post, skipWarning = false) {
                 let bumpedAt = this.get('model.bumpedAt');
                 let now = moment();
-                let diff = now.diff(bumpedAt);
+                let diff = now - bumpedAt;
                 let d = moment.duration(settings.death_timer);
+                alert(d);
 
                 if((diff >= d) && !skipWarning){
                     // TODO: i18n this
