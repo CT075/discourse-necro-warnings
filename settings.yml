@@ -1,4 +1,4 @@
-reply_warning_message:
-  default: "This topic is closed - normal users cannot reply. Would you like to use your staff privileges to reply anyway?"
+death_timer:
+  default: "P3M"
   description:
-    en: The message displayed to admins who try and reply to a closed topic.
+    en: "[ISO8601 duration] How long after the last post before a thread is considered dead"
