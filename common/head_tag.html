@@ -9,7 +9,7 @@
 
                 if((diff >= d) && !skipWarning){
                     // TODO: i18n this
-                    let confirmationMessage = "The last post in this thread was {0} ago. Are you sure you want to bump this thread?".format(diff.humanize());
+                    let confirmationMessage = "The last post in this thread was {0}. Are you sure you want to bump this thread?".format(bumpedAt.fromNow());
                     bootbox.confirm(confirmationMessage, I18n.t("no_value"), I18n.t("yes_value"), result => {
                         if (result) {
                           this.send('replyToPost', post, true);
