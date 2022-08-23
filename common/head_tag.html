@@ -3,7 +3,6 @@
        actions:{
            replyToPost(post, skipWarning = false) {
                 let bumpedAt = this.get('model.bumpedAt');
-                alert(typeof(bumpedAt));
                 let now = moment();
                 let diff = now.diff(bumpedAt);
                 let d = moment.duration(settings.death_timer);
