@@ -2,9 +2,9 @@
     api.modifyClass('controller:topic', {
        actions:{
            replyToPost(post, skipWarning = false) {
-                let bumpedAt = this.get('model.bumpedAt');
+                let lastPostedAt = moment(this.get('model.last_posted_at'));
                 let now = moment();
-                let diff = now - bumpedAt;
+                let diff = now - lastPostedAt;
                 let d = moment.duration(settings.death_timer);
 
                 if((diff >= d) && !skipWarning){
