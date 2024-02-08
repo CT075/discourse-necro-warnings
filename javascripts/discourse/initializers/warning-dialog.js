@@ -20,7 +20,7 @@ export default {
               // TODO: i18n this
               let diffH = moment.duration(diff).humanize();
               let confirmationMessage = `The last post in this thread was ${diffH} ago. Are you sure you want to bump this thread?`;
-              this.dialogue.yesNoConfirm({
+              this.dialog.yesNoConfirm({
                 message: confirmationMessage,
                 didConfirm: () => {
                   this.send("replyToPost", post, true);
