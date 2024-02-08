@@ -2,7 +2,7 @@ import { withPluginApi } from "discourse/lib/plugin-api";
 import { inject as service } from "@ember/service";
 
 export default {
-  name: "discourse-admin-warnings",
+  name: "discourse-necro-warnings",
 
   initialize() {
     withPluginApi("0.11.7", (api) => {
