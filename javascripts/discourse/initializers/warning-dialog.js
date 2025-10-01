@@ -3,15 +3,15 @@ import { inject as service } from "@ember/service";
 
 export default {
   name: "discourse-necro-warnings",
-
   initialize() {
-    withPluginApi("0.11.7", (api) => {
-      api.modifyClass("service:composer", (Super) => class extends Super {
+    withPluginApi("0.8.8", (api) => {
+      api.modifyClass("service:composer", (Superclass) => class extends Superclass {
         save(...args) {
-          console.log("got here")
+          console.log(this.model.last_posted_at)
           let lastPostedAt = moment(this.model.last_posted_at);
           let now = moment();
           let diff = now - lastPostedAt;
+          console.log(diff)
           let d = moment.duration(settings.death_timer);
 
           if((diff >= d) && !skipWarning) {
