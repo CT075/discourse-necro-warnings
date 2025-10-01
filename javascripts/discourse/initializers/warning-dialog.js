@@ -6,11 +6,26 @@ export default {
   initialize() {
     withPluginApi("0.8.8", (api) => {
       api.modifyClass("service:composer", (Superclass) => class extends Superclass {
+        getLastPostedAt() {
+          let topicId = this.model?.topic?.id || this.model?.topic_id;
+          if (!topicId) {
+            return null;
+          }
+          let topic = this.store.peekRecord("topic", topicId);
+          return topic?.last_posted_at || null;
+        }
+
         save(...args) {
-          let lastPostedAt = moment(this.model?.last_posted_at);
-          console.log(this.model?.last_posted_at)
+          let mlastPostedAt = getLastPostedAt();
+          if (!mlastPostedAt) {
+            super.save(...args);
+            return;
+          }
+
+          let lastPostedAt = moment(mlastPostedAt);
           let now = moment();
           let diff = now - lastPostedAt;
+          console.log(diff)
           let d = moment.duration(settings.death_timer);
 
           if((diff >= d) && !skipWarning) {
