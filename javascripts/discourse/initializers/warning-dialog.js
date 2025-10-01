@@ -8,6 +8,7 @@ export default {
       api.modifyClass("service:composer", (Superclass) => class extends Superclass {
         save(...args) {
           let lastPostedAt = moment(this.model?.last_posted_at);
+          console.log(this.model?.last_posted_at)
           let now = moment();
           let diff = now - lastPostedAt;
           let d = moment.duration(settings.death_timer);
