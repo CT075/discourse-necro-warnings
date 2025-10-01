@@ -7,11 +7,9 @@ export default {
     withPluginApi("0.8.8", (api) => {
       api.modifyClass("service:composer", (Superclass) => class extends Superclass {
         save(...args) {
-          console.log(this.model.last_posted_at)
-          let lastPostedAt = moment(this.model.last_posted_at);
+          let lastPostedAt = moment(this.model?.last_posted_at);
           let now = moment();
           let diff = now - lastPostedAt;
-          console.log(diff)
           let d = moment.duration(settings.death_timer);
 
           if((diff >= d) && !skipWarning) {
