@@ -8,6 +8,7 @@ export default {
     withPluginApi("0.11.7", (api) => {
       api.modifyClass("service:composer", (Super) => class extends Super {
         save(...args) {
+          console.log("got here")
           let lastPostedAt = moment(this.model.last_posted_at);
           let now = moment();
           let diff = now - lastPostedAt;
@@ -20,7 +21,7 @@ export default {
             this.dialog.yesNoConfirm({
               message: confirmationMessage,
               didConfirm: () => {
-                this.send("replyToPost", post, true);
+                super.save(...args)
               }
             });
           } else {
