@@ -16,7 +16,7 @@ export default {
         }
 
         save(...args) {
-          let mlastPostedAt = getLastPostedAt();
+          let mlastPostedAt = this.getLastPostedAt();
           if (!mlastPostedAt) {
             super.save(...args);
             return;
